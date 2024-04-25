@@ -1,4 +1,9 @@
 {% extends 'merge_files/base.html' %}
 {% block content %}
 <h1>Главная</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Merge and Download</button>
+</form>
 {% endblock %}
