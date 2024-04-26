@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom-styles.css' %}" rel="stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100">
 <header class="p-3 text-bg-dark">
@@ -15,7 +16,7 @@
             </div>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{% url 'merge_files:index' %}" class="nav-link px-2 text-{% if active_page == 'index' %}secondary{% else %}white{% endif %}">Главная</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Загруженные файлы</a></li>
+                <li><a href="{% url 'merge_files:files_list' %}" class="nav-link px-2 text-{% if active_page == 'files_list' %}secondary{% else %}white{% endif %}">Загруженные файлы</a></li>
             </ul>
 
         </div>

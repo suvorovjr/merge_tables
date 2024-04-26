@@ -1,9 +1,18 @@
 {% extends 'merge_files/base.html' %}
 {% block content %}
-<h1>Главная</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Merge and Download</button>
-</form>
+<h1 class="text-center m-5">Загрузка файлов:</h1>
+<div class="container-fluid pb-3">
+    <div class="d-grid gap-3" style="grid-template-columns: 2fr 2fr;">
+        <div class="bg-body-tertiary border rounded-3">
+            <h1 class="text-center">Загрузите файлы для дальнейшего соединения в правом окне этой страницы</h1>
+        </div>
+        <div class="bg-body-tertiary border rounded-3">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline-success m-3">Загрузить файлы</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
