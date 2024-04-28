@@ -1,3 +1,5 @@
+from datetime import datetime
+import pandas as pd
 import openpyxl
 import os
 import csv
@@ -44,3 +46,19 @@ class ToCSVClient:
             for cell in row:
                 if not ToCSVClient.is_colored(cell):
                     sheet.delete_cols(cell.column, 1)
+
+
+class MergeFiles:
+
+    def __init__(self, san_file, market_file):
+        self.san_file = san_file
+        self.market_file = market_file
+
+    def merge_files(self):
+        csv_client = ToCSVClient(self.market_file)
+        market_csv_path = csv_client.clear_excel_files()
+        san_df = pd.read_csv(self.san_file, delimiter=';')
+        market_df = pd.read_csv(market_csv_path, delimiter=';')
+        merge_df = pd.merge(san_df, market_df, left_on='SKU на нашем сайте', right_on='SKU', how='inner')
+        merge_filename = f'{str(datetime.now())}.xlsx'
+        merge_df.to_excel(merge_filename, index=False)
