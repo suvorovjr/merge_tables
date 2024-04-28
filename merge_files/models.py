@@ -12,3 +12,15 @@ class UploadFiles(models.Model):
     class Meta:
         verbose_name = 'Загруженные файлы'
         verbose_name_plural = 'Загруженные файлы'
+
+
+class MergedFile(models.Model):
+    merge_date = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Дата и время загрузки')
+    merge_file = models.FileField(upload_to='merge_files/', verbose_name='Соединенный файл')
+
+    def __str__(self):
+        return f'{self.merge_file}'
+
+    class Meta:
+        verbose_name = 'Соединенный файл'
+        verbose_name_plural = 'Соединенные файлы'
