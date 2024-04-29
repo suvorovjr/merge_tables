@@ -1,8 +1,9 @@
-from datetime import datetime
-import pandas as pd
 import openpyxl
+import pandas as pd
 import os
 import csv
+from datetime import datetime
+from pathlib import Path
 
 
 class ToCSVClient:
@@ -13,16 +14,16 @@ class ToCSVClient:
     def clear_excel_files(self):
         workbook = openpyxl.load_workbook(self.market_file)
         sheet = workbook.active
-        ToCSVClient.delete_unwanted_row(sheet)
         ToCSVClient.share_cells(sheet)
+        ToCSVClient.delete_unwanted_row(sheet)
         new_path = ToCSVClient.get_to_csv(sheet, self.market_file)
         return new_path
 
     @staticmethod
     def share_cells(sheet):
-        merged_cells = [str(merged_cell) for merged_cell in sheet.merged_cells.ranges]
-        for merged_cell in merged_cells:
-            sheet.unmerge_cells(str(merged_cell))
+        merged_cells_ranges = list(sheet.merged_cells)
+        for merged_range in merged_cells_ranges:
+            sheet.unmerge_cells(str(merged_range))
         sheet.delete_rows(6)
 
     @staticmethod
@@ -60,5 +61,9 @@ class MergeFiles:
         san_df = pd.read_csv(self.san_file, delimiter=';')
         market_df = pd.read_csv(market_csv_path, delimiter=';')
         merge_df = pd.merge(san_df, market_df, left_on='SKU на нашем сайте', right_on='SKU', how='inner')
-        merge_filename = f'{str(datetime.now())}.xlsx'
+        save_dir = Path(__file__).parent.parent / 'media/merge_files'
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+        merge_filename = f'{save_dir}/merge_{datetime.now()}.xlsx'
         merge_df.to_excel(merge_filename, index=False)
+        return merge_filename
