@@ -1,8 +1,6 @@
 from django import forms
-from django.core.exceptions import ValidationError
-from django.forms import SelectDateWidget
-import os
 from merge_files.models import UploadFiles
+import os
 
 
 class StylesMixin:
@@ -28,5 +26,6 @@ class UploadFilesForm(StylesMixin, forms.ModelForm):
         cleaned_data = self.cleaned_data['market_file']
         extension = os.path.splitext(cleaned_data.name)[-1]
         if extension != '.xlsx':
-            raise forms.ValidationError('Неподдерживаемый формат файла. Для файла Я.Маркета разрешен только XLSX формат.')
+            raise forms.ValidationError(
+                'Неподдерживаемый формат файла. Для файла Я.Маркета разрешен только XLSX формат.')
         return cleaned_data

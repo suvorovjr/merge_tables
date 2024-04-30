@@ -8,8 +8,8 @@ import os
 @shared_task
 def merge_files(files_pk):
     obj = UploadFiles.objects.get(pk=files_pk)
-    san_file = obj.file1.path
-    market_file = obj.file2.path
+    san_file = obj.san_file.path
+    market_file = obj.market_file.path
     merge_file_client = MergeFiles(san_file=san_file, market_file=market_file)
     path_to_merge_file = merge_file_client.merge_files()
     merge_file_instance = MergedFile()

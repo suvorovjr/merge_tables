@@ -16,7 +16,7 @@ class ToCSVClient:
         sheet = workbook.active
         ToCSVClient.share_cells(sheet)
         ToCSVClient.delete_unwanted_row(sheet)
-        new_path = ToCSVClient.get_to_csv(sheet, self.market_file)
+        new_path = ToCSVClient.get_to_csv(sheet)
         return new_path
 
     @staticmethod
@@ -33,8 +33,8 @@ class ToCSVClient:
         return False
 
     @staticmethod
-    def get_to_csv(sheet, excel_path):
-        csv_path = os.path.splitext(excel_path)[0] + '.csv'
+    def get_to_csv(sheet):
+        csv_path = 'market_file.csv'
         with open(csv_path, 'w', newline='', encoding='utf-8-sig') as file:
             c = csv.writer(file, delimiter=';')
             for row in sheet.iter_rows(min_row=5, values_only=True):

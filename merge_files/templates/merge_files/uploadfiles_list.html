@@ -13,16 +13,16 @@
                     <div class="card-body">
                         <h5 class="card-title">
                             <img src="{% static 'imagine/excel_logo.png' %}" alt="Описание"
-                                 class="excel-logo"/>{{ object.file1 }}</h5>
+                                 class="excel-logo"/>{{ object.san_file }}</h5>
                         <h5 class="card-title">
                             <img src="{% static 'imagine/excel_logo.png' %}" alt="Описание"
                                  class="excel-logo"/>
-                            {{ object.file2 }}
+                            {{ object.market_file }}
                         </h5>
-                        <a href="" class="btn btn-outline-primary m-2">
+                        <a href="{% url 'merge_files:merge_files' object.pk %}" class="btn btn-outline-primary m-2">
                             <img src="{% static 'imagine/merged_logo.svg' %}" alt="My Image" width="20" height="20"/>
                             Соединить</a>
-                        <a href="" class="btn btn-outline-danger">
+                        <a href="{% url 'merge_files:delete_upload_files' object.pk %}" class="btn btn-outline-danger">
                             <img src="{% static 'imagine/delete_logo.svg' %}" alt="My Image" width="20" height="20"/>
                             Удалить</a>
                     </div>
@@ -32,7 +32,35 @@
             {% endfor %}
         </div>
         {% else %}
-        <h1 class="h1 mb-3 fw-normal text-center">У вас нет активных рассылок</h1>
+        <h1 class="h1 mb-3 fw-normal text-center">Загруженных файлов нет</h1>
+        {% endif %}
+    </div>
+    <div class="container mt-4">
+        <h1 class="text-center m-5">Соединенные файлы:</h1>
+        {% if merged_files_list %}
+        <div class="row mt-3">
+            {% for object in merged_files_list %}
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header">Файл № {{ forloop.counter }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <img src="{% static 'imagine/excel_logo.png' %}" alt="Описание"
+                                 class="excel-logo"/>{{ object.merge_file }}</h5>
+                        <a href="{% url 'merge_files:download_file' object.pk %}" class="btn btn-outline-success m-2">
+                            <img src="{% static 'imagine/download_logo.svg' %}" alt="My Image" width="20" height="20"/>
+                            Скачать</a>
+                        <a href="{% url 'merge_files:delete_merge_file' object.pk %}" class="btn btn-outline-danger">
+                            <img src="{% static 'imagine/delete_logo.svg' %}" alt="My Image" width="20" height="20"/>
+                            Удалить</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">Дата соединения {{ object.merge_date }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h1 class="h1 mb-3 fw-normal text-center">Соединенных файлов нет</h1>
         {% endif %}
     </div>
 </main>

@@ -1,4 +1,6 @@
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_delete
 
 
 class UploadFiles(models.Model):
@@ -24,3 +26,18 @@ class MergedFile(models.Model):
     class Meta:
         verbose_name = 'Соединенный файл'
         verbose_name_plural = 'Соединенные файлы'
+
+
+@receiver(post_delete)
+def delete_attached_file(sender, instance, **kwargs):
+    """
+    После удаления экземпляра MyModel удаляет файл из файловой системы.
+    """
+    if sender == UploadFiles:
+        if instance.san_file:
+            instance.san_file.delete(save=False)
+        if instance.market_file:
+            instance.market_file.delete(save=False)
+    elif sender == MergedFile:
+        if instance.merge_file:
+            instance.merge_file.delete(save=False)
