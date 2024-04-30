@@ -1,5 +1,7 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms import SelectDateWidget
+import os
 from merge_files.models import UploadFiles
 
 
@@ -14,3 +16,17 @@ class UploadFilesForm(StylesMixin, forms.ModelForm):
     class Meta:
         model = UploadFiles
         fields = '__all__'
+
+    def clean_san_file(self):
+        cleaned_data = self.cleaned_data['san_file']
+        extension = os.path.splitext(cleaned_data.name)[-1]
+        if extension != '.csv':
+            raise forms.ValidationError('Неподдерживаемый формат файла. Для файла Sanbest разрешен только CSV формат.')
+        return cleaned_data
+
+    def clean_market_file(self):
+        cleaned_data = self.cleaned_data['market_file']
+        extension = os.path.splitext(cleaned_data.name)[-1]
+        if extension != '.xlsx':
+            raise forms.ValidationError('Неподдерживаемый формат файла. Для файла Я.Маркета разрешен только XLSX формат.')
+        return cleaned_data
