@@ -7,9 +7,8 @@
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <h4 class="alert-heading">Осторожно!</h4>
-                    <p>Подтвердите удаление файлов {{ object.san_file }} и {{ object.market_file }}</p>
+                    <p>Подтвердите удаление файла {{ object.san_file }} и {{ object.market_file }}</p>
                     <hr>
-                    <p class="mb-0">Смердженные файлы будут автоматически добавлены на страницу с файлами.</p>
                     <button type="submit" class="btn btn-danger">Удалить</button>
                     <a class="btn btn-primary" href="{% url 'merge_files:files_list' %}">Отмена</a>
                 </form>

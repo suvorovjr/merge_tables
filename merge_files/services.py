@@ -34,7 +34,7 @@ class ToCSVClient:
 
     @staticmethod
     def get_to_csv(sheet):
-        csv_path = 'market_file.csv'
+        csv_path = 'media/exel_files/market_file.csv'
         with open(csv_path, 'w', newline='', encoding='utf-8-sig') as file:
             c = csv.writer(file, delimiter=';')
             for row in sheet.iter_rows(min_row=5, values_only=True):
