@@ -33,7 +33,9 @@ class UploadFilesDetailView(DetailView):
 
     def get(self, request, *args, **kwargs):
         obj = self.get_object()
-        merge_files.delay(obj.pk)
+        san_file = obj.san_file.path
+        market_file = obj.market_file.path
+        merge_files.delay(san_file, market_file)
         return HttpResponseRedirect('/page-info/')
 
 
