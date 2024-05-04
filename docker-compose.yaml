@@ -1,5 +1,10 @@
 version: '3.8'
 
+volumes:
+  pgdata:
+  static:
+  media:
+
 services:
   db:
     image: postgres
@@ -9,12 +14,13 @@ services:
     expose:
       - "5432"
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL",  "pg_isready -U $POSTGRES_USER" ]
       interval: 10s
       retries: 3
       timeout: 5s
+
   redis:
     image: redis
     expose:
@@ -24,7 +30,7 @@ services:
     tty: true
     ports:
       - "8000:8000"
-    command: sh -c "python manage.py collectstatic --no-input &&
+    command: sh -c "python manage.py collectstatic &&
                     python manage.py makemigrations &&
                     python manage.py migrate &&
                     python manage.py runserver 0.0.0.0:8000"
@@ -37,19 +43,14 @@ services:
       - ./:/app
       - ./static:/app/static
       - ./media:/app/media
-  celery:
+  celery-worker:
     build: .
-    tty: true
-    command: celery -A config worker -l INFO
-    restart: on-failure
-    depends_on:
-      - redis
-      - app
+    container_name: celery-worker
+    restart: always
     env_file:
       - .env
     volumes:
+      - ./:/app
       - media:/app/media
-volumes:
-  pg_data:
-  static:
-  media:
+
+
