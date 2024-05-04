@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:14.11-alpine
+    image: postgres
     restart: on-failure
     env_file:
       - .env
@@ -11,12 +11,12 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "-c", "pg_isready -U $POSTGRES_USER" ]
+      test: [ "CMD-SHELL",  "pg_isready -U $POSTGRES_USER" ]
       interval: 10s
       retries: 3
       timeout: 5s
   redis:
-    image: redis:latest
+    image: redis
     expose:
       - "6379"
   app:
@@ -24,12 +24,19 @@ services:
     tty: true
     ports:
       - "8000:8000"
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py collectstatic --no-input &&
+                    python manage.py makemigrations &&
+                    python manage.py migrate &&
+                    python manage.py runserver 0.0.0.0:8000"
     depends_on:
       db:
         condition: service_healthy
     env_file:
       - .env
+    volumes:
+      - ./:/app
+      - static:/app/static
+      - media:/app/media
   celery:
     build: .
     tty: true
@@ -40,5 +47,9 @@ services:
       - app
     env_file:
       - .env
+    volumes:
+      - media:/app/media
 volumes:
   pg_data:
+  static:
+  media:

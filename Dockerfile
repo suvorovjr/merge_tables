@@ -1,8 +1,10 @@
 FROM python:3.10
 
-WORKDIR /check_price
+WORKDIR /app
 
-COPY ./requirements.txt /check_price/
+COPY ./requirements.txt /app/
+
+RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
