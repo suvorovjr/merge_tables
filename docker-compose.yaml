@@ -1,28 +1,13 @@
 version: '3.8'
 
 volumes:
-  pgdata:
   static:
   media:
 
 services:
-  db:
-    image: postgres
-    restart: on-failure
-    env_file:
-      - .env
-    expose:
-      - "5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: [ "CMD-SHELL",  "pg_isready -U $POSTGRES_USER" ]
-      interval: 10s
-      retries: 3
-      timeout: 5s
-
   redis:
-    image: redis
+    image: redis:latest
+    restart: on-failure
     expose:
       - "6379"
   app:
@@ -30,13 +15,9 @@ services:
     tty: true
     ports:
       - "8000:8000"
-    command: sh -c "python manage.py collectstatic &&
-      python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py runserver 0.0.0.0:8000"
-    depends_on:
-      db:
-        condition: service_healthy
+    command: sh -c "python manage.py makemigrations &&  
+                    python manage.py migrate &&  
+                    python manage.py runserver 0.0.0.0:8000"
     env_file:
       - .env
     volumes:
@@ -53,5 +34,3 @@ services:
     volumes:
       - ./:/app
       - media:/app/media
-
-
