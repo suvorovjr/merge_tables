@@ -11,3 +11,14 @@ class ReportFile(models.Model):
     class Meta:
         verbose_name = 'Загруженный отчет'
         verbose_name_plural = 'Загруженные отчеты'
+
+
+class Brand(models.Model):
+    name = models.CharField(max_length=55, unique=True, verbose_name='Название бренда')
+
+    def __str__(self):
+        return f'Бренд - {self.name}'
+
+    class Meta:
+        verbose_name = 'бренд'
+        verbose_name_plural = 'бренды'
