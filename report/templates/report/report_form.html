@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center m-5">Загрузка отчета:</h1>
+<div class="container-fluid pb-3">
+    <div class="d-grid gap-3" style="grid-template-columns: 2fr 2fr;">
+        <div class="bg-body-tertiary border rounded-3">
+            <h1 class="text-center">Загрузите отчет для его дальнейшего изменения</h1>
+        </div>
+        <div class="bg-body-tertiary border rounded-3">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group input-group-lg mb-3 mt-3">
+                    {{ form.file }}
+                    <label class="input-group-text">Загрузите отчет</label>
+                </div>
+                <button type="submit" class="btn btn-outline-success m-3">Загрузить отчет</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
