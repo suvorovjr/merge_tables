@@ -5,8 +5,6 @@ from merge_files.forms import StylesMixin
 
 
 class ReportForm(StylesMixin, forms.ModelForm):
-    model = ReportFile
-    fields = '__all__'
 
     def clean_file(self):
         cleaned_data = self.cleaned_data['file']
@@ -16,3 +14,7 @@ class ReportForm(StylesMixin, forms.ModelForm):
                 return cleaned_data
             case _:
                 raise forms.ValidationError('Необходимо загрузить файл формата ".xlsx"')
+
+    class Meta:
+        model = ReportFile
+        fields = '__all__'
