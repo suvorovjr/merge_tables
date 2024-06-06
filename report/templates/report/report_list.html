@@ -14,6 +14,9 @@
                         <h5 class="card-title">
                             <img src="{% static 'imagine/excel_logo.png' %}" alt="Описание"
                                  class="excel-logo"/>{{ object.file }}</h5>
+                        <a href="{% url 'report:detail' object.pk %}" class="btn btn-outline-success m-2">
+                            <img src="{% static 'imagine/download_logo.svg' %}" alt="My Image" width="20" height="20"/>
+                            Начать работу</a>
                     </div>
                     <div class="card-footer text-body-secondary">Дата соединения {{ object.upload_date }}</div>
                 </div>

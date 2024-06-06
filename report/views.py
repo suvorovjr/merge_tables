@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from .forms import ReportForm
 from django.urls import reverse_lazy
 from common.mixins import ContextDataMixin
@@ -18,3 +18,9 @@ class ReportListView(ContextDataMixin, ListView):
     template_name = 'report/report_list.html'
     title = 'Загруженные отчеты'
     active_page = 'report_list'
+
+
+class ReportDetailView(ContextDataMixin, DetailView):
+    model = ReportFile
+    template_name = 'report/report_detail.html'
+    title = 'Работа с отчетом'
