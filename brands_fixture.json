@@ -1,0 +1,569 @@
+[
+{
+    "model": "report.brand",
+    "pk": 1,
+    "fields": {
+        "name": "Акватон"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 2,
+    "fields": {
+        "name": "Мономах"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 3,
+    "fields": {
+        "name": "Опадирис"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 4,
+    "fields": {
+        "name": "abber"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 5,
+    "fields": {
+        "name": "Agger"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 6,
+    "fields": {
+        "name": "AM.PM"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 7,
+    "fields": {
+        "name": "Ambassador"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 8,
+    "fields": {
+        "name": "Aquanet"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 9,
+    "fields": {
+        "name": "Allen Brau"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 10,
+    "fields": {
+        "name": "Aquatek"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 11,
+    "fields": {
+        "name": "Aqwella"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 12,
+    "fields": {
+        "name": "Arcade"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 13,
+    "fields": {
+        "name": "Arcus"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 14,
+    "fields": {
+        "name": "Art&Max"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 15,
+    "fields": {
+        "name": "Artceram"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 16,
+    "fields": {
+        "name": "BAS"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 17,
+    "fields": {
+        "name": "BelBagno"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 18,
+    "fields": {
+        "name": "Berges"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 19,
+    "fields": {
+        "name": "bertocci"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 20,
+    "fields": {
+        "name": "Bravat"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 21,
+    "fields": {
+        "name": "Bronze De Luxe"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 22,
+    "fields": {
+        "name": "Caprigo"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 23,
+    "fields": {
+        "name": "CeramaLux"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 24,
+    "fields": {
+        "name": "Ceramica Nova"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 25,
+    "fields": {
+        "name": "Cersanit"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 26,
+    "fields": {
+        "name": "Cerutti SPA"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 27,
+    "fields": {
+        "name": "Сezares"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 28,
+    "fields": {
+        "name": "Сisal"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 29,
+    "fields": {
+        "name": "Clarberg"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 30,
+    "fields": {
+        "name": "Comforty"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 31,
+    "fields": {
+        "name": "Damixa"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 32,
+    "fields": {
+        "name": "Deto"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 33,
+    "fields": {
+        "name": "Dorff"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 34,
+    "fields": {
+        "name": "Elegansa"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 35,
+    "fields": {
+        "name": "erlit"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 36,
+    "fields": {
+        "name": "Esbano"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 37,
+    "fields": {
+        "name": "GID"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 38,
+    "fields": {
+        "name": "Good Door"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 39,
+    "fields": {
+        "name": "Grossman"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 40,
+    "fields": {
+        "name": "Frank"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 41,
+    "fields": {
+        "name": "hansmann keramik"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 42,
+    "fields": {
+        "name": "Ideal Standard"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 43,
+    "fields": {
+        "name": "Inda"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 44,
+    "fields": {
+        "name": "Jacob Delafon"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 45,
+    "fields": {
+        "name": "Kerasan"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 46,
+    "fields": {
+        "name": "Koller Pool"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 47,
+    "fields": {
+        "name": "La fenice"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 48,
+    "fields": {
+        "name": "Migliore"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 49,
+    "fields": {
+        "name": "Niagara"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 50,
+    "fields": {
+        "name": "Orange"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 51,
+    "fields": {
+        "name": "Paffoni"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 52,
+    "fields": {
+        "name": "Parly"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 53,
+    "fields": {
+        "name": "Paini"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 54,
+    "fields": {
+        "name": "Radaway"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 55,
+    "fields": {
+        "name": "Rav-Slezak"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 56,
+    "fields": {
+        "name": "Ravak"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 57,
+    "fields": {
+        "name": "RGW"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 58,
+    "fields": {
+        "name": "Riho"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 59,
+    "fields": {
+        "name": "River"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 60,
+    "fields": {
+        "name": "Royal Bath"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 61,
+    "fields": {
+        "name": "Santek"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 62,
+    "fields": {
+        "name": "Sancos"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 63,
+    "fields": {
+        "name": "santiline"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 64,
+    "fields": {
+        "name": "Shouder"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 65,
+    "fields": {
+        "name": "Simas"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 66,
+    "fields": {
+        "name": "Tece"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 67,
+    "fields": {
+        "name": "Tiffany World"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 68,
+    "fields": {
+        "name": "Timo"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 69,
+    "fields": {
+        "name": "toto"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 70,
+    "fields": {
+        "name": "Veconi"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 71,
+    "fields": {
+        "name": "Veragio"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 72,
+    "fields": {
+        "name": "Vidima"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 73,
+    "fields": {
+        "name": "Vincea"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 74,
+    "fields": {
+        "name": "vitra"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 75,
+    "fields": {
+        "name": "WasserKRAFT"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 76,
+    "fields": {
+        "name": "Webert"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 77,
+    "fields": {
+        "name": "Weltwasser"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 78,
+    "fields": {
+        "name": "wemor"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 79,
+    "fields": {
+        "name": "Zorg"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 80,
+    "fields": {
+        "name": "alex batler"
+    }
+},
+{
+    "model": "report.brand",
+    "pk": 81,
+    "fields": {
+        "name": "misty"
+    }
+}
+]
