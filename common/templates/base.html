@@ -17,7 +17,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{% url 'merge_files:index' %}" class="nav-link px-2 text-{% if active_page == 'index' %}secondary{% else %}white{% endif %}">Главная</a></li>
                 <li><a href="{% url 'merge_files:files_list' %}" class="nav-link px-2 text-{% if active_page == 'files_list' %}secondary{% else %}white{% endif %}">Файлы</a></li>
-                <li><a href="{% url 'merge_files:files_list' %}" class="nav-link px-2 text-{% if active_page == 'files_list' %}secondary{% else %}white{% endif %}">Отчет</a></li>
+                <li><a href="{% url 'report:create' %}" class="nav-link px-2 text-{% if active_page == 'files_list' %}secondary{% else %}white{% endif %}">Отчет</a></li>
             </ul>
 
         </div>

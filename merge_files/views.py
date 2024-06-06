@@ -4,28 +4,22 @@ from merge_files.forms import UploadFilesForm
 from django.http import HttpResponseRedirect, FileResponse
 from django.urls import reverse_lazy
 from .tasks import merge_files
+from common.mixins import ContextDataMixin
 
 
-class UploadFilesCreateView(CreateView):
-    model = UploadFiles
+class UploadFilesCreateView(ContextDataMixin, CreateView):
     form_class = UploadFilesForm
     template_name = 'merge_files/index.html'
     success_url = reverse_lazy('merge_files:files_list')
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        context_data['active_page'] = 'index'
-        return context_data
+    title = 'Загрузка файлов для сравнения'
+    active_page = 'index'
 
 
-class UploadFilesListView(ListView):
+class UploadFilesListView(ContextDataMixin, ListView):
     model = UploadFiles
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        context_data['active_page'] = 'files_list'
-        context_data['merged_files_list'] = MergedFile.objects.all()
-        return context_data
+    title = 'Список файлов'
+    active_page = 'files_list'
+    additional_object_list = MergedFile.objects.all()
 
 
 class UploadFilesDetailView(DetailView):
