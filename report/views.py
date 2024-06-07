@@ -1,8 +1,9 @@
+from django.http import JsonResponse
 from django.views.generic import CreateView, ListView, DetailView
 from .forms import ReportForm
 from django.urls import reverse_lazy
 from common.mixins import ContextDataMixin
-from .models import ReportFile
+from .models import ReportFile, Brand
 
 
 class ReportCreateView(ContextDataMixin, CreateView):
@@ -24,3 +25,8 @@ class ReportDetailView(ContextDataMixin, DetailView):
     model = ReportFile
     template_name = 'report/report_detail.html'
     title = 'Работа с отчетом'
+
+
+def load_brands(request):
+    brands = list(Brand.objects.all().values('id', 'name'))
+    return JsonResponse(brands, safe=False)
