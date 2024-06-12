@@ -5,8 +5,14 @@
     <div class="container mt-4">
         <h1 class="text-center m-5">Работа с отчетом {{ object.file }}</h1>
         <div class="row mt-3">
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-3 text-center">
+                <button id="addBrandBtn" class="btn btn-outline-primary m-2 mx-auto"><img
+                        src="{% static 'imagine/download_logo.svg' %}" alt="My Image" width="20" height="20"/>Добавить
+                    бренд товара
+                </button>
             </div>
+            <div class="col-12 mt-3 mx-auto" id="brandsContainer"></div>
+            <button id="submitBtn">Отправить данные</button>
         </div>
     </div>
 </main>
