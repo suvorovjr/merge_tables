@@ -22,3 +22,15 @@ class Brand(models.Model):
     class Meta:
         verbose_name = 'бренд'
         verbose_name_plural = 'бренды'
+
+
+class ChangeReport(models.Model):
+    upload_date = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Дата и время загрузки')
+    file = models.FileField(upload_to='changes_report', verbose_name='Файл')
+
+    def __str__(self):
+        return f'Файл {self.file} загружен {self.upload_date}'
+
+    class Meta:
+        verbose_name = 'измененный отчет'
+        verbose_name_plural = 'измененные отчеты'
