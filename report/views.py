@@ -1,6 +1,6 @@
 import json
 from json.decoder import JSONDecodeError
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse
 from django.utils.decorators import method_decorator
 from .tasks import change_report
 from django.views.decorators.csrf import csrf_exempt
@@ -43,6 +43,15 @@ class ReportDetailView(ContextDataMixin, DetailView):
             return JsonResponse({'status': 'success'})
         except JSONDecodeError as e:
             return JsonResponse({'status': 'error', 'message': e.msg})
+
+
+class ReportDownloadView(DetailView):
+    model = ChangeReport
+
+    def get(self, request, *args, **kwargs):
+        file_object = self.get_object()
+        response = FileResponse(file_object.file.open(), as_attachment=True, filename=file_object.file.name)
+        return response
 
 
 def load_brands(request):

@@ -1,6 +1,8 @@
-import numpy as np
+from pathlib import Path
+
 import pandas as pd
 from datetime import datetime
+
 from .models import Brand
 
 
@@ -9,7 +11,8 @@ class MakeReport:
     def __init__(self, file_path, data):
         self.__file_path = file_path
         self.__data = data
-        self.__save_path = datetime.now().strftime('%Y-%m-%d_%H-%M-%S.xlsx')
+        self.__save_path = Path(
+            __file__).parent.parent / f"media/changes_report/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S.xlsx')}"
         self.__df = pd.read_excel(self.__file_path, sheet_name='Список товаров', header=(1,))
         self.__result_df = pd.DataFrame(columns=self.__df.columns)
 
