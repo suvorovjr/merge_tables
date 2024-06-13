@@ -27,9 +27,7 @@ class MakeReport:
         self.__result_df['Разница порогов'] = (
                 100 * (self.__result_df['Подходящий порог'] - self.__result_df['Ваш порог для софинсирования'])
                 / self.__result_df['Подходящий порог']
-        )
-
-        self.__result_df['Разница порогов'] = self.__result_df['Разница порогов'].apply(np.ceil)
+        ).round(1)
 
     def save_to_excel(self):
         self.__result_df.to_excel(self.__save_path, index=False)
@@ -37,5 +35,5 @@ class MakeReport:
 
     @staticmethod
     def get_brand_from_id(brand_id):
-        brand = Brand.objects.filter(id=brand_id).first
+        brand = Brand.objects.get(pk=brand_id)
         return brand.name

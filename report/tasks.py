@@ -6,7 +6,7 @@ import os
 
 
 @shared_task
-def merge_files(file_path, data):
+def change_report(file_path, data):
     report_client = MakeReport(file_path=file_path, data=data)
     report_client.change_df()
     report_client.set_difference()

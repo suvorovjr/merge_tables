@@ -27,5 +27,30 @@
         <h1 class="h1 mb-3 fw-normal text-center">Соединенных файлов нет</h1>
         {% endif %}
     </div>
+    <div class="container mt-4">
+        <h1 class="text-center m-5">Соединенные файлы:</h1>
+        {% if additional_object_list %}
+        <div class="row mt-3">
+            {% for object in additional_object_list %}
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header">Файл № {{ forloop.counter }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <img src="{% static 'imagine/excel_logo.png' %}" alt="Описание"
+                                 class="excel-logo"/>{{ object.file }}</h5>
+                        <a href="{% url 'merge_files:download_file' object.pk %}" class="btn btn-outline-success m-2">
+                            <img src="{% static 'imagine/download_logo.svg' %}" alt="My Image" width="20" height="20"/>
+                            Скачать</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">Дата создания {{ object.upload_date }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h1 class="h1 mb-3 fw-normal text-center">Соединенных файлов нет</h1>
+        {% endif %}
+    </div>
 </main>
 {% endblock %}

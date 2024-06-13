@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
             brandsData.push({brandId: brandId, rate: percentageRate});
         });
 
-        fetch('/report/api/get-data/', {
+        fetch(window.location.href, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
