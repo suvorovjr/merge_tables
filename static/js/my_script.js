@@ -1,29 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
     if (window.location.pathname.includes("detail")) {
-        fetchBrandList(); // Загрузка данных продуктов сразу при загрузке страницы
+        fetchBrandList();
     }
 
     const addBrandBtn = document.getElementById("addBrandBtn");
+    const sendBrandsBtn = document.getElementById("sendBrandsBtn");
     const brandsContainer = document.getElementById("brandsContainer");
 
-    let brandNames = []; // Здесь будем хранить список продуктов
+    let brandNames = [];
 
     function fetchBrandList() {
         fetch('/report/api/brands/', {
-            method: 'GET', // или 'POST', если ваш API требует другой метод
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
         })
         .then(response => response.json())
         .then(data => {
-            brandNames = data; // Сохраняем полученные данные о продуктах
+            brandNames = data;
         })
         .catch(error => {
             console.error('Ошибка при получении списка товаров:', error);
         });
     }
 
+    // Function to add brand options
     function addBrandOptions() {
         // Создаем новый выпадающий список
         const rowDiv = document.createElement('div');
@@ -71,7 +73,53 @@ document.addEventListener("DOMContentLoaded", function() {
         brandsContainer.appendChild(clearfixDiv);
     }
 
+    // Функция для сбора и отправки данных
+    function sendBrandsData() {
+        const allSelects = brandsContainer.querySelectorAll("select");
+        const allInputs = brandsContainer.querySelectorAll("input");
+
+        const brandsData = [];
+
+        allSelects.forEach((select, index) => {
+            const brandId = select.value;
+            const percentageRate = allInputs[index].value;
+            brandsData.push({brandId: brandId, rate: percentageRate});
+        });
+
+        fetch('/report/api/get-data/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(brandsData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети или сервера');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status == 'success') {
+                console.log('Успех:', data);
+                alert('Данные успешно отправлены!');
+                window.location.href = '/';
+            } else if (data.status == 'error') {
+                alert(data.message);
+            }
+
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Ошибка при отправке данных: ' + error.message);
+        });
+    }
+
     addBrandBtn.addEventListener("click", function() {
-        addBrandOptions(); // Добавление выпадающего списка при клике на кнопку
+        addBrandOptions();
+    });
+
+    sendBrandsBtn.addEventListener("click", function() {
+        sendBrandsData();
     });
 });
