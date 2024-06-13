@@ -1,6 +1,6 @@
 from celery import shared_task
 from .services import MergeFiles
-from merge_files.models import UploadFiles, MergedFile
+from merge_files.models import MergedFile
 from django.core.files import File
 import os
 
