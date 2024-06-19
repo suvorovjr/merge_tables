@@ -19,7 +19,11 @@ class UploadFilesListView(ContextDataMixin, ListView):
     model = UploadFiles
     title = 'Список файлов'
     active_page = 'files_list'
-    additional_object_list = MergedFile.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data()
+        context_data['additional_object_list'] = MergedFile.objects.all()
+        return context_data
 
 
 class UploadFilesDetailView(DetailView):

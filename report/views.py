@@ -24,7 +24,11 @@ class ReportListView(ContextDataMixin, ListView):
     template_name = 'report/report_list.html'
     title = 'Загруженные отчеты'
     active_page = 'report_list'
-    additional_object_list = ChangeReport.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data()
+        context_data['additional_object_list'] = ChangeReport.objects.all()
+        return context_data
 
 
 @method_decorator(csrf_exempt, name='dispatch')
