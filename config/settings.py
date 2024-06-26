@@ -134,3 +134,7 @@ CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_TIMEZONE = "Australia/Tasmania"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+USELESS_COLUMNS = ['Категория', 'Со скидками за ваш счёт, ₽', 'Порог для привлекательной цены, ₽',
+                   'Софинансирование скидок', 'Продажи за 30 дней, шт.', 'Продажи за 30 дней, ₽',
+                   'Сравнение ваших цен на площадках', 'Цена, ₽']
