@@ -27,13 +27,16 @@ class MergeFiles:
         :return: Возвращает путь к соединенному файлу
         """
 
+        self.delete_useless_columns()
         merge_df = pd.merge(self.__sanbest_df, self.__market_df, left_on='SKU на нашем сайте', right_on='SKU',
                             how='inner')
         save_dir = Path(__file__).parent.parent / 'media/merge_files'
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         merge_filename = f'{save_dir}/merge_{datetime.now()}.xlsx'
-        merge_df.to_excel(merge_filename, index=False)
+        named_columns = [col for col in merge_df.columns if not col.startswith('Unnamed')]
+        save_df = merge_df[named_columns]
+        save_df.to_excel(merge_filename, index=False)
         return merge_filename
 
     def delete_useless_columns(self) -> None:
@@ -43,7 +46,7 @@ class MergeFiles:
         :return: None
         """
 
-        columns = []
+        columns = settings.USELESS_COLUMNS
         for column in columns:
             if column in self.__market_df.columns:
                 self.__market_df = self.__market_df.drop(columns=column)
