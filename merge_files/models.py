@@ -3,6 +3,17 @@ from django.dispatch import receiver
 from django.db.models.signals import post_delete
 
 
+# class AbstractFile(models.Model):
+#     upload_date = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Дата и время загрузки')
+#     file = models.FileField(upload_to='files', verbose_name='Файл')
+#
+#     def __str__(self):
+#         return f'Файл {self.file} загружен {self.upload_date}'
+#
+#     class Meta:
+#         abstract = True
+
+
 class UploadFiles(models.Model):
     upload_date = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Дата и время загрузки')
     san_file = models.FileField(upload_to='exel_files/', verbose_name='Файл Sanbest')
