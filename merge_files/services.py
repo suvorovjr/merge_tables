@@ -28,6 +28,8 @@ class MergeFiles:
         """
 
         self.delete_useless_columns()
+        self.__sanbest_df['SKU на нашем сайте'] = self.__sanbest_df['SKU на нашем сайте'].astype(str)
+        self.__market_df['SKU'] = self.__market_df['SKU'].astype(str)
         merge_df = pd.merge(self.__sanbest_df, self.__market_df, left_on='SKU на нашем сайте', right_on='SKU',
                             how='inner')
         save_dir = Path(__file__).parent.parent / 'media/merge_files'
